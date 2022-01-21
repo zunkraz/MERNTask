@@ -77,7 +77,7 @@ a {
 .btn-block {
   display: block;
   width: 100%;
-}
+};
 .btn-submit:hover {
   background-color: var(--gris2);
 }
