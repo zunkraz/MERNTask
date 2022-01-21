@@ -1,26 +1,26 @@
 import React, {useContext} from 'react';
 import taskContext from '../../context/task/taskContext';
-import projectContext from '../../context/projectContext';
+import projectContext from '../../context/projects/projectContext';
 
 
 const Task = ({task}) => {
 
     const tasksContext = useContext(taskContext);
-    const {deleteTask,getTasks,stateTask,editTask} = tasksContext;
+    const {deleteTask,getTasks,updateTask,editTask} = tasksContext;
     const projectsContext = useContext(projectContext);
     const {project} = projectsContext;
 
     const handleDelete = id => {
-        deleteTask(id);
+        deleteTask(id, project[0]._id);
         getTasks(project[0].id);
     }
     const alterTask = task => {
-        if(task.state){
-            task.state = false
+        if(task.status){
+            task.status = false
         }else{
-            task.state = true
+            task.status = true
         }
-        stateTask(task)
+        updateTask(task)
     }
     //modify a task
     const selectTask = task => {
@@ -30,7 +30,7 @@ const Task = ({task}) => {
    <li className='tarea sombra'>
        <p>{task.name}</p>
        <div className='estado'>
-            {task.state 
+            {task.status 
             ? 
                 <button 
                     type='button'
@@ -50,7 +50,7 @@ const Task = ({task}) => {
        <div className='acciones'>
            <button type='button' className='btn btn-primario' onClick={() => selectTask(task)}>Edit</button>
            <button type='button' className='btn btn-secundario'
-           onClick={() => handleDelete(task.idTask)}>Detele</button>
+           onClick={() => handleDelete(task._id)}>Detele</button>
 
        </div>
    </li>

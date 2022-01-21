@@ -1,5 +1,5 @@
 import React, {Fragment, useContext, useState} from 'react';
-import projectContext from '../../context/projectContext';
+import projectContext from '../../context/projects/projectContext';
 
 const NewProject = () => {
     //get form state

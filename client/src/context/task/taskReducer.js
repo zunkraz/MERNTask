@@ -3,7 +3,6 @@ import {
     ADD_TASK,
     VALIDATE_TASK,
     DELETE_TASK,
-    STATUS_TASK,
     EDIT_TASK,
     UPDATE_TASK,
 
@@ -14,12 +13,12 @@ const stateTwo = (state,action) => {
        case TASKS_PROJECTS:
            return {
                ...state,
-               projectTask: state.tasks.filter(task => task.projectId === action.payload)
+               projectTask:action.payload
            }
         case ADD_TASK:
             return {
                 ...state,
-                tasks: [action.payload,...state.tasks],
+                projectTask: [action.payload,...state.projectTask],
                 errorTask: false
 
             }
@@ -32,14 +31,12 @@ const stateTwo = (state,action) => {
         case DELETE_TASK:
             return{
                 ...state,
-                tasks:state.tasks.filter(task => task.idTask !== action.payload)
+                projectTask:state.projectTask.filter(task => task._id !== action.payload)
             }
-        case UPDATE_TASK:
-        case STATUS_TASK:
-        
+        case UPDATE_TASK:  
             return{
                 ...state,
-                tasks: state.tasks.map(task => task.idTask === action.payload.idTask ? action.payload:  task),
+                projectTask: state.projectTask.map(task => task._id === action.payload._id ? action.payload:  task),
                 taskSelected:null
             }
         case EDIT_TASK:

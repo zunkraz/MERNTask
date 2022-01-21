@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 
-import projectContext from '../../context/projectContext';
+import projectContext from '../../context/projects/projectContext';
 import taskContext from '../../context/task/taskContext';
 
 const Project = ({project}) => {
@@ -21,7 +21,7 @@ const Project = ({project}) => {
 
     return ( 
         <li>
-            <button type="button" className='btn btn-blank' onClick={() => selectProject(project.id)}>
+            <button type="button" className='btn btn-blank' onClick={() => selectProject(project._id)}>
                 {project.name}
             </button>
                

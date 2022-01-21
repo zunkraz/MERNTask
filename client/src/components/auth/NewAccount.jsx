@@ -1,16 +1,40 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, {useState,useContext,useEffect} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
+import AlertContext from '../../context/alerts/alertContext'
+import AuthContext from '../../context/authentication/authContext'
+
 const NewAccount = () => {
-    
+let navigate = useNavigate();
+//extract values from alertContext
+const alertContext = useContext(AlertContext);
+const {alert, showAlert} = alertContext;
+
+//extract values from authcontext
+const authContext = useContext(AuthContext);
+const {registerUser,authenticated,message} = authContext;
+
+//si el usuario ya se autentico se registro o este duplicado
+
+ useEffect(() => {
+    if(authenticated){
+        navigate('/projects')
+    }
+    if(message){
+        showAlert(message.msg,message.category)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+},[message,authenticated,navigate]);
+
+
     //state for user
 const [user,saveUser] = useState({
-    username: '',
+    name: '',
     password: '',
     passwordrepeat:'',
     email: ''
 });
 
-const {username,password,email,passwordrepeat} = user;
+const {name,password,email,passwordrepeat} = user;
 
     const onChangeLogin = (e) => {
         saveUser({
@@ -22,12 +46,33 @@ const {username,password,email,passwordrepeat} = user;
     const handleSubmit = (e) => {
         e.preventDefault();
         //Validations
+        if(name.trim() === '' ||
+            email.trim() === '' ||
+            password.trim() === '' ||
+            passwordrepeat.trim() === ''){
+                showAlert('All fields are required','alerta-error')
+                return;
+        }
 
+        if(password.length <6){
+            showAlert('password must be atleast 6 characters','alerta-error')
+            return;
+        }
+        if(password !== passwordrepeat){
+            showAlert('the passwords must be equeals','alerta-error')
+            return;
+        }
         //Actions
+
+        registerUser({
+            name,
+            email,
+            password
+        })
     }
     return ( 
         <div className='form-usuario'>
-
+            {alert ? (<div className={`alert ${alert.category}`}>{alert.msg}</div>) : null}
         <div className='contenedor-form sombra-dark'>
             <h1>Create Account</h1>
 
@@ -40,8 +85,8 @@ const {username,password,email,passwordrepeat} = user;
                 type="text"
                 placeholder='Username'
                 autoComplete='off'
-                name='username'
-                value= {username}
+                name='name'
+                value= {name}
                 onChange={onChangeLogin}
                  />
             </div>

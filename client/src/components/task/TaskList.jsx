@@ -1,12 +1,14 @@
-import React,{Fragment} from 'react';
+import React,{Fragment, useRef} from 'react';
 import { useContext } from 'react';
-import projectContext from '../../context/projectContext';
+import projectContext from '../../context/projects/projectContext';
 import taskContext from '../../context/task/taskContext';
 import Task from './Task';
 import {CSSTransition,TransitionGroup} from 'react-transition-group';
 
 
 const TaskList = () => {
+const nodeRef = useRef(null);
+
     //extract tasks from initial state two
     const tasksContext = useContext(taskContext);
     const {projectTask} = tasksContext;
@@ -29,9 +31,10 @@ const TaskList = () => {
                     : <TransitionGroup>
                        {projectTask.map(task => 
                         <CSSTransition
-                        key={task.idTask}
+                        key={task._id}
                         timeout={200}
                         classNames='tarea'
+                        nodeRef={nodeRef}
                         >
                             <Task 
                             task={task}
@@ -41,7 +44,7 @@ const TaskList = () => {
                     </TransitionGroup>
                 }
             </ul>
-            <button type='button' className='btn btn-eliminar' onClick={() => deleteProject(project[0].id)}>Delete Project &times;</button>
+            <button type='button' className='btn btn-eliminar' onClick={() => deleteProject(project[0]._id)}>Delete Project &times;</button>
         </Fragment>
      );
 }
