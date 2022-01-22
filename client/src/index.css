@@ -90,6 +90,15 @@ a {
 .btn-eliminar{
   background-color: #ef476f;
 }
+.cerrar-session{
+  background-color:var(--blanco);
+  transition: 0.3s;
+  padding: 10px;
+}
+.cerrar-session:hover{
+  background-color:#ef476f;
+  color: #ffffff;
+}
 
 @media (min-width: 768px) {
   .contenedor-app {
@@ -351,6 +360,11 @@ aside  {
       top: 30px;
       right: 10px;
       left: auto;
+  }
+}
+@media(max-width:600px){
+  .campo-form label{
+    display: none;
   }
 }
 
