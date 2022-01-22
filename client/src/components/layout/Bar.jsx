@@ -19,7 +19,7 @@ const Bar = () => {
         
             <nav className='nav-principal'>
                 <button 
-                    className='btn btn-blank cerrar-session'
+                    className='btn btn-blank btn-close'
                     onClick={() => logOut()}   
                 >Log out</button>
             </nav>

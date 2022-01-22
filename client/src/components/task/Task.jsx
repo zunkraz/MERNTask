@@ -12,7 +12,7 @@ const Task = ({task}) => {
 
     const handleDelete = id => {
         deleteTask(id, project[0]._id);
-        getTasks(project[0].id);
+        getTasks(project[0]._id);
     }
     const alterTask = task => {
         if(task.status){

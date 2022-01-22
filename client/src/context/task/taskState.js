@@ -31,7 +31,7 @@ const TaskState = props => {
             payload: result.data.tasks
         })
        } catch (error) {
-           console.log(error)
+           console.log(error.response)
        }
     }
     //Add Task

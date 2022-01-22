@@ -1,6 +1,8 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const cors = require('cors');
+const morgan = require('morgan');
+
 //making server
 const app = express();
 
@@ -9,6 +11,7 @@ connectDB();
 
 //activate cors
 app.use(cors());
+app.use(morgan('dev'));
 
 //enable express.json
 app.use(express.json({extended: true}))
