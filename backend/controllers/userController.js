@@ -50,8 +50,7 @@ exports.createUser = async (req,res) => {
             to: email, // list of receivers
             subject: "Welcome to MERNTask. we're very happy that you join us ✔", // Subject line
             html: "<b>Hello world!</b>", // html body
-          });
-
+        });
     }catch(error){
         console.log(error);
         res.status(400).send('Something went wrong!')
