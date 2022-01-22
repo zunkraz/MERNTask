@@ -2,6 +2,7 @@ const User = require('../models/User');
 const bcryptjs = require('bcryptjs');
 const {validationResult} = require('express-validator');
 const jwt = require('jsonwebtoken');
+const {transporter} = require('./meilerController');
 
 
 exports.createUser = async (req,res) => {
@@ -43,7 +44,6 @@ exports.createUser = async (req,res) => {
             if(error) throw error;
             res.json({token})
         });
-        
         //sending email confirmation
         await transporter.sendMail({
             from: '"Welcome to MERNTask 👻" <foo@example.com>', // sender address
@@ -54,6 +54,6 @@ exports.createUser = async (req,res) => {
     }catch(error){
         console.log(error);
         res.status(400).send('Something went wrong!')
-    }
+    };
 }
 
