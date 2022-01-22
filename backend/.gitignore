@@ -15,5 +15,5 @@ package-lock.json
 # production
 /build
 
-# misc
+#env
 .env
