@@ -1,7 +1,7 @@
 # 😁😁💻 Welcome to my repo, here some information about this project.
 <h1>MERN Task Project</h1>
 
-<p>Welcome to my project, please read this .md for understand better this mini project<p>
+<p>Welcome to my project, please read this .md for understand better this mini project.<p>
 
 <ul>
     <h2>Technologies:<h2>
