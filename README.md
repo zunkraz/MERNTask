@@ -15,7 +15,7 @@
     <li>Nodemeiler</li>
 </ul>
 
-<p>MERNTask is a project made for users who want to manage different personal projects, is similar to TodoList but better, you can log in and save your information for a long time. The mean target here, was to apply different technologies and implement authentications such as "Json web token", linked a database through a backend, and serve with a client, in summary, make a full-stack app.</p>
+<p>MERNTask is a project made for users who want to manage different personal projects, is similar to TodoList but better, you can log in and save your information for a long time. The main target here, was to apply different technologies and implement authentications such as "Json web token", linked a database through a backend, and serve with a client, in summary, make a full-stack app.</p>
 
 <h2>Media</h2>
 <img height="300" width="300" src='./client/media/img1.png'>
